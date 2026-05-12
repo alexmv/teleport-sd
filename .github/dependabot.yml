@@ -1,0 +1,15 @@
+# Update GitHub Actions weekly with a 1-week cooldown — gives the ecosystem
+# time to flag broken releases before we pick them up.
+#
+# Go module updates are deliberately omitted: the only direct dep is the
+# Teleport API library, which is pinned manually to match the cluster's major
+# version (see "Upgrading the Teleport API dependency" in README.md), and
+# everything else is transitive and resolved by MVS from that pin.
+version: 2
+updates:
+  - package-ecosystem: github-actions
+    directory: /
+    schedule:
+      interval: weekly
+    cooldown:
+      default-days: 7
